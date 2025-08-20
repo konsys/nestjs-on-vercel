@@ -46,7 +46,7 @@ export class ContactsService {
     return await this.contactRepository.delete(id);
   }
 
-  @Cron(CronExpression.EVERY_30_SECONDS, { name: 'test-named' })
+  @Cron(CronExpression.EVERY_10_MINUTES, { name: 'test-named' })
   async handleCron() {
     this.logger.debug('Called every 10 minutes');
 
