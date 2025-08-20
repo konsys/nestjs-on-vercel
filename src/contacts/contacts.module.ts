@@ -9,4 +9,4 @@ import { Contact } from './models/contact.entity';
   providers: [ContactsService],
   controllers: [ContactsController],
 })
-export class ContactsModule {}
+export class ContactsModule { }

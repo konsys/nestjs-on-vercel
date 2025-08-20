@@ -9,7 +9,7 @@ export class Contact {
   nft_id: number;
 
   @Column({ nullable: true, type: 'text' })
-  date: Date;
+  date: string;
 
   @Column({ nullable: true, type: 'text' })
   total_withdrawn1: string; // 0,
