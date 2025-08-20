@@ -6,6 +6,9 @@ export class Contact {
   id: number;
 
   @Column({ nullable: true, type: 'text' })
+  priceWETH: string;
+
+  @Column({ nullable: true, type: 'text' })
   nft_id: number;
 
   @Column({ nullable: true, type: 'text' })

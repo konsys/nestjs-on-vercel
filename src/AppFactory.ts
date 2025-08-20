@@ -3,8 +3,9 @@ import { NestFactory } from '@nestjs/core';
 import { Request, Response, Express } from 'express';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module.js';
-import compression from 'compression';
-import express from 'express';
+import * as compression from 'compression';
+import * as express from 'express';
+
 
 export const port = process.env.PORT || 9000
 export class AppFactory {
