@@ -26,7 +26,7 @@ export class AppFactory {
         app.enableCors({
           exposedHeaders: '*',
         });
-        await app.listen(process.env.PORT ?? 3000)
+        await app.listen(process.env.PORT ?? 9000)
         app.use(compression());
         app.init();
       })

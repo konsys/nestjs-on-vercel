@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ScheduleModule } from '@nestjs/schedule';
 import { ContactsController } from './contacts/controllers/contact.controller';
 import { Contact } from './contacts/models/contact.entity';
 import { ContactsService } from './contacts/services/contacts.service';
@@ -15,7 +14,6 @@ const dbPath = path.join(__dirname, '../../', 'db.sqlite');
 console.log(dbPath)
 @Module({
   imports: [
-    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'db4free.net',

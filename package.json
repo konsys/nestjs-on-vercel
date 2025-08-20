@@ -27,6 +27,7 @@
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.11.0",
     "compression": "^1.8.1",
+    "cron": "^4.3.3",
     "express": "^5.1.0",
     "mysql": "^2.18.1",
     "pg": "^8.16.3",
