@@ -3,10 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, Repository } from 'typeorm';
 import { Contact } from '../models/contact.entity';
 import { UpdateResult, DeleteResult } from 'typeorm';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import axios from 'axios';
 import { PositionResponseDto } from '../../types';
-import { CronJob } from 'cron';
 
 type TSelect = {
   take: number
@@ -24,7 +22,19 @@ export class ContactsService {
     private contactRepository: Repository<Contact>,
   ) { }
 
-  private async cronFunction() {
+  /*
+
+* * * * * *
+| | | | | |
+| | | | | day of week
+| | | | months
+| | | day of month
+| | hours
+| minutes
+seconds (optional)
+
+*/
+  async cronFunction() {
     const res = await axios
       .get<PositionResponseDto>(
         'https://api.revert.finance/v1/positions/uniswapv3/account/0x5fb52b7d3de68053298e561f0ce4662b4bb48f88?active=true',
@@ -33,7 +43,7 @@ export class ContactsService {
       .catch((error) => {
         console.log(111, error);
       });
-    console.log(234234, res)
+    console.log('CRON FUNCTION CALLED', res)
     if (res) {
       const toSave = res.data.map(async (v) => {
         const r = this.contactRepository.create({
@@ -46,22 +56,6 @@ export class ContactsService {
       });
       await Promise.all(toSave);
     }
-  }
-
-  async start() {
-    console.log('start')
-    const st = () => this.cronFunction()
-    const job = new CronJob(
-      CronExpression.EVERY_10_SECONDS, // cronTime
-      async function () {
-
-        st()
-      }, // onTick
-      null, // onComplete
-      false, // start
-      'America/Los_Angeles' // timeZone
-    );
-    job.start()
   }
 
   async findAll(): Promise<Contact[]> {
@@ -87,34 +81,6 @@ export class ContactsService {
     return await this.contactRepository.delete(id);
   }
 
-  // @Cron(CronExpression.EVERY_30_SECONDS, { name: 'test-named' })
-  // async handleCron() {
-  //   this.logger.debug('Called every 10 minutes');
-
-  //   const res = await axios
-  //     .get<PositionResponseDto>(
-  //       'https://api.revert.finance/v1/positions/uniswapv3/account/0x5fb52b7d3de68053298e561f0ce4662b4bb48f88?active=true',
-  //     )
-  //     .then((response) => response.data)
-  //     .catch((error) => {
-  //       console.log(111, error);
-  //     });
-
-  //   console.log(1111, res)
-  //   if (res) {
-  //     const toSave = res.data.map(async (v) => {
-  //       const r = this.contactRepository.create({
-  //         ...v,
-  //         id: null,
-  //         date: new Date().toISOString(),
-  //       });
-  //       console.log(r)
-  //       await this.contactRepository.save(r);
-  //     });
-  //     await Promise.all(toSave);
-  //   }
-
-  // }
 }
 
 

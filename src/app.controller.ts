@@ -8,7 +8,11 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    this.contactService.start()
     return this.appService.getHello();
+  }
+
+  @Get('cron')
+  getHello1(): Promise<void> {
+    return this.contactService.cronFunction()
   }
 }
