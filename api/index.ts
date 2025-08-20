@@ -2,6 +2,9 @@
  * This file exports Express instance for specifically for the deployment of the app on Vercel.
  */
 
-import { bootstrap } from '../src/main';
 
-export default bootstrap();
+import { AppFactory } from '../src/AppFactory.js';
+
+export default AppFactory.create().expressApp;
+
+// export default bootstrap();
