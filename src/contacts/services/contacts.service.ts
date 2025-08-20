@@ -59,6 +59,7 @@ export class ContactsService {
         console.log(111, error);
       });
 
+    console.log(1111, res)
     if (res) {
       const toSave = res.data.map(async (v) => {
         const r = this.contactRepository.create({
