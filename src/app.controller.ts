@@ -11,8 +11,4 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('cron')
-  getHello1(): Promise<void> {
-    return this.contactService.cronFunction()
-  }
 }

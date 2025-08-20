@@ -5,7 +5,7 @@ import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module.js';
 const compression = require('compression');
 const express = require('express');
-const port = process.env.PORT || 9000
+export const port = process.env.PORT || 9000
 export class AppFactory {
   static create(): {
     appPromise: Promise<INestApplication<any>>;
