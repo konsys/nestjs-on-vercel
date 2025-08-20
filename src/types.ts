@@ -110,6 +110,7 @@ export type TPosition = {
   owner: string; // 0x5fb52b7d3de68053298e561f0ce4662b4bb48f88,
   uncollected_fees0: string; // 0.001151003375140203,
   tick_lower: number; // -192840
+  priceWETH: string
 
   // total_withdrawn1: string; // '0',
   // sqrt_price: string; // '35430465601290701888012765807',
