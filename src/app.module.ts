@@ -7,6 +7,7 @@ import { ContactsController } from './contacts/controllers/contact.controller';
 import { Contact } from './contacts/models/contact.entity';
 import { ContactsService } from './contacts/services/contacts.service';
 
+
 const path = require('path');
 
 const dbPath = path.join(__dirname, '../../', 'db.sqlite');
