@@ -16,14 +16,52 @@ export class ContactsController {
   @Get('/filter')
   index1(@Query('take') take: number,
     @Query('skip') skip: number,
+    @Query('nft_id') nft_id: number,
+    @Query('network') network: string,
+    @Query('token0') token0: string,
+    @Query('token1') token1: string,
+    @Query('owner') owner: string,
+    @Query('in_range') in_range: '1' | '2',
+    @Query('date') date: string,
     @Query('order') order: FindOptionsOrderValue): Promise<Contact[]> {
 
 
-    return this.contactsService.find({
+    const find = {
       take: take ?? 10,
       skip: skip ?? 0,
-      order: { id: order ?? 'DESC' }
-    });
+      order: { id: order ?? 'DESC' },
+      where: {
+      }
+    }
+
+    if (nft_id) {
+      find['where']['nft_id'] = nft_id
+    }
+    if (network) {
+      find['where']['network'] = network
+    }
+    if (token0) {
+      find['where']['token0'] = token0
+    }
+
+    if (token1) {
+      find['where']['token1'] = token1
+    }
+    if (owner) {
+      find['where']['owner'] = owner
+    }
+    if (owner) {
+      find['where']['owner'] = owner
+    }
+    if (date) {
+      find['where']['date'] = date
+    }
+
+    if (in_range) {
+      find['where']['in_range'] = in_range
+    }
+    console.log(11111, find)
+    return this.contactsService.find(find);
   }
 
 
