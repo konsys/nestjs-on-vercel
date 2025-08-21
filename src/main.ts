@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { port } from './AppFactory';
 import compression from 'compression';
+import serverless = require('serverless-http');
 
 // export async function bootstrap() {
 //     const app = await NestFactory.create(AppModule);
@@ -16,9 +16,8 @@ import compression from 'compression';
 
 
 
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
-import serverless = require('serverless-http');
+
+
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
