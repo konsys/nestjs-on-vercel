@@ -26,6 +26,8 @@ export class ContactsController {
     @Query('order') order: FindOptionsOrderValue): Promise<Contact[]> {
 
 
+
+    console.log(234234234, take)
     const find = {
       take: take ?? 10,
       skip: skip ?? 0,
