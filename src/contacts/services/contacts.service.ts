@@ -73,20 +73,16 @@ export class ContactsService {
     const price = result?.data?.tokenDayDatas?.length ? result?.data?.tokenDayDatas[0].priceUSD : 0
 
 
-    console.log(234234234, price)
     const res = await axios
       .get<PositionResponseDto>(
         'https://api.revert.finance/v1/positions/uniswapv3/account/0x5fb52b7d3de68053298e561f0ce4662b4bb48f88?active=true',
       )
       .then((response) => response.data)
       .catch((error) => {
-        console.log(111, error);
+        console.log("error", error);
       });
 
 
-
-
-    console.log(1111, res)
     if (res) {
       const toSave = res.data.map(async (v) => {
         const r = this.contactRepository.create({
@@ -95,7 +91,6 @@ export class ContactsService {
           date: new Date().toISOString(),
           priceWETH: price.toString()
         });
-        console.log(r)
         await this.contactRepository.save(r);
       });
       await Promise.all(toSave);

@@ -27,7 +27,6 @@ export class ContactsController {
 
 
 
-    console.log(234234234, take)
     const find = {
       take: take ?? 10,
       skip: skip ?? 0,
@@ -62,7 +61,7 @@ export class ContactsController {
     if (in_range) {
       find['where']['in_range'] = in_range
     }
-    console.log(11111, find)
+
     return this.contactsService.find(find);
   }
 
