@@ -7,7 +7,7 @@ import * as compression from 'compression';
 import * as express from 'express';
 
 
-export const port = process.env.PORT || 9000
+export const port = process.env.PORT || 8999
 export class AppFactory {
   static create(): {
     appPromise: Promise<INestApplication<any>>;
