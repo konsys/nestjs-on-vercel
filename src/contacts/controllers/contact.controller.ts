@@ -53,9 +53,7 @@ export class ContactsController {
     if (owner) {
       find['where']['owner'] = owner
     }
-    if (owner) {
-      find['where']['owner'] = owner
-    }
+
     if (date) {
       find['where']['date'] = date
     }
@@ -63,7 +61,7 @@ export class ContactsController {
     if (in_range) {
       find['where']['in_range'] = in_range
     }
-
+    console.log(111, find)
     return this.contactsService.find(find);
   }
   @Get('/save') index2() {
